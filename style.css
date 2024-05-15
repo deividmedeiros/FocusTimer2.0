@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --hue: 194;
+    --bg-color: hsl(var(--hue), 5%, 7%);
+    --card-color: hsl(240, 42%, 86%);
+    --card-hover: hsl(194, 97%, 31%);
+    --card-fill: hsl(240, 6%, 21%);
+    --card-fill-hover: #FFFFFF;
+    --text-color: hsl(var(--hue), 40%, 98%);
+    --primary-color: hsl(var(--hue), 100%, 63%);
+    --controls-bg-color: hsl(var(--hue), 0%, 14%);
+    --button-secondary: hsl(var(--hue), 40%, 98%);
+
+    --font-size: clamp(40%, 1% + 2vw, 62.5%);
+}
+
+html.light {
+    --text-color: hsl(var(--hue), 5%, 7%);
+    --bg-color: hsl(var(--hue), 40%, 98%);
+    --controls-bg-color: hsl(var(--hue), 0%, 14%);
+}
+
+html.light .ph-sun,
+html:not(.light) .ph-moon {
+    display: none;
+}
+
+#toggle-mode {
+    position: absolute;
+    right: 3.2rem;
+    top: 3.2rem;
+    font-size: 3.2rem;
+    line-height: 0;
+    color: var(--text-color);
+}
+
+.sr-only {
+    width: 0.1rem;
+    height: 0.1rem;
+    display: flex;
+    overflow: hidden;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    height: 100vh;
+    place-content: center;
+}
+
+#app {
+    display: grid;
+    justify-items: center;
+}
+
+.flex {
+    display: flex;
+}
+
+#timer {
+    font-size: 9.6rem;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+#controls {
+    margin-top: 1rem;
+    gap: 2rem;
+}
+
+button {
+    background-color: transparent;
+    border: 0;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 6.4rem;
+}
+
+/* controls */
+.running .ph-play-circle,
+.running .ph-timer,
+.music-on .ph-speaker-none,
+html:not(.running) .ph-pause-circle,
+html:not(.music-on) .ph-speaker-high {
+    display: none;
+}
+
+.cardWrapper {
+    display: grid;
+    grid-template-areas:
+        "A B"
+        "C D";
+    gap: 1.5rem
+}
+
+.card {
+    width: 8rem;
+    background: var(--card-color);
+    border-radius: 2.4rem;
+    transition: background 0.5s ease;
+}
+
+.card svg path,
+.btn svg path {
+    fill: var(--card-fill);
+    transition: fill 0.25s ease;
+}
+
+.card:hover,
+.card:hover svg path {
+    background: var(--card-hover);
+    fill: var(--card-fill-hover);
+    cursor: pointer;
+}
+
+svg {
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
+    body {
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #toggle-mode {
+        position: absolute;
+        right: .1rem;
+        top: 0;
+        color: var(--text-color);
+        font-size: 2rem;
+    }
+
+    #timer {
+        font-size: 6rem;
+        font-weight: bold;
+        font-family: sans-serif;
+    }
+
+    #controls {
+        display: grid;
+        grid-template-areas:
+            "A B"
+            "C D";
+    }
+
+    button {
+        font-size: 4rem;
+    }
+
+    .card {
+        width: 7.5rem;
+        padding: 1.5rem;
+        background: var(--card-color);
+        border-radius: 2.4rem;
+        transition: background 0.5s ease;
+    }
+
+    .card svg path,
+    .btn svg path {
+        fill: var(--card-fill);
+        transition: fill 0.25s ease;
+    }
+
+    .card:hover,
+    .card:hover svg path {
+        background: var(--card-hover);
+        fill: var(--card-fill-hover);
+    }
+}
